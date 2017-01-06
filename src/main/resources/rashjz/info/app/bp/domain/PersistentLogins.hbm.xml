@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Aug 19, 2016 3:16:02 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="rashjz.info.app.bp.domain.PersistentLogins" table="persistent_logins" catalog="bakuposter" optimistic-lock="version">
+        <id name="series" type="string">
+            <column name="series" length="64" />
+            <generator class="assigned" />
+        </id>
+        <property name="username" type="string">
+            <column name="username" length="64" not-null="true" />
+        </property>
+        <property name="token" type="string">
+            <column name="token" length="64" not-null="true" />
+        </property>
+        <property name="lastUsed" type="timestamp">
+            <column name="last_used" length="19" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

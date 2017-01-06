@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Aug 19, 2016 3:16:02 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="rashjz.info.app.bp.domain.GcmUsers" table="GCM_USERS" catalog="bakuposter" optimistic-lock="version">
+        <id name="id" type="java.lang.Integer">
+            <column name="ID" />
+            <generator class="identity" />
+        </id>
+        <property name="gcmRegid" type="string">
+            <column name="GCM_REGID" length="1000" />
+        </property>
+        <property name="name" type="string">
+            <column name="NAME" length="100" />
+        </property>
+        <property name="email" type="string">
+            <column name="EMAIL" length="200" />
+        </property>
+        <property name="createdAt" type="timestamp">
+            <column name="CREATED_AT" length="19" not-null="true" />
+        </property>
+        <property name="status" type="string">
+            <column name="STATUS" length="20" />
+        </property>
+    </class>
+</hibernate-mapping>

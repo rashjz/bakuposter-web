@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Aug 19, 2016 3:16:02 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="rashjz.info.app.bp.domain.Location" table="LOCATION" catalog="bakuposter" optimistic-lock="version">
+        <id name="recId" type="java.lang.Integer">
+            <column name="REC_ID" />
+            <generator class="identity" />
+        </id>
+        <property name="title" type="string">
+            <column name="TITLE" length="300" />
+        </property>
+        <property name="note" type="string">
+            <column name="NOTE" length="1000" />
+        </property>
+        <property name="insDate" type="timestamp">
+            <column name="INS_DATE" length="19" not-null="true" />
+        </property>
+        <property name="status" type="string">
+            <column name="STATUS" length="1" />
+        </property>
+        <property name="latitude" type="java.lang.Float">
+            <column name="LATITUDE" precision="12" scale="0" />
+        </property>
+        <property name="longitude" type="java.lang.Float">
+            <column name="LONGITUDE" precision="12" scale="0" />
+        </property>
+    </class>
+</hibernate-mapping>

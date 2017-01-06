@@ -1,0 +1,63 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Aug 19, 2016 3:16:02 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="rashjz.info.app.bp.domain.Content" table="CONTENT" catalog="bakuposter" optimistic-lock="version">
+        <id name="recId" type="java.lang.Integer">
+            <column name="REC_ID" />
+            <generator class="identity" />
+        </id>
+        <property name="title" type="string">
+            <column name="TITLE" length="300" />
+        </property>
+        <property name="description" type="string">
+            <column name="DESCRIPTION" length="5800" />
+        </property>
+        <property name="releaseYear" type="java.lang.Integer">
+            <column name="RELEASE_YEAR" />
+        </property>
+        <property name="rating" type="java.lang.Float">
+            <column name="RATING" precision="8" scale="4" />
+        </property>
+        <property name="endDate" type="date">
+            <column name="END_DATE" length="10" />
+        </property>
+        <property name="insDate" type="date">
+            <column name="INS_DATE" length="10" />
+        </property>
+        <property name="videoUrl" type="string">
+            <column name="VIDEO_URL" length="200" />
+        </property>
+        <property name="imgUrl" type="string">
+            <column name="IMG_URL" length="200" />
+        </property>
+        <property name="locationId" type="java.lang.Integer">
+            <column name="LOCATION_ID" />
+        </property>
+        <property name="genre" type="string">
+            <column name="GENRE" length="200" />
+        </property>
+        <property name="note" type="string">
+            <column name="NOTE" length="1000" />
+        </property>
+        <property name="status" type="string">
+            <column name="STATUS" length="1" />
+        </property>
+        <property name="typeId" type="java.lang.Integer">
+            <column name="TYPE_ID" />
+        </property>
+        <property name="ageAllow" type="java.lang.Integer">
+            <column name="AGE_ALLOW" />
+        </property>
+        <property name="price" type="java.lang.Float">
+            <column name="PRICE" precision="8" scale="4" />
+        </property>
+        <property name="producer" type="string">
+            <column name="PRODUCER" length="200" />
+        </property>
+        <property name="writer" type="string">
+            <column name="WRITER" length="100" />
+        </property>
+    </class>
+</hibernate-mapping>

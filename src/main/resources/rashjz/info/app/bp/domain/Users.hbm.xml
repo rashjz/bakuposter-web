@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Aug 19, 2016 3:16:02 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="rashjz.info.app.bp.domain.Users" table="users" catalog="bakuposter" optimistic-lock="version">
+        <id name="username" type="string">
+            <column name="username" length="45" />
+            <generator class="assigned" />
+        </id>
+        <property name="password" type="string">
+            <column name="password" length="45" not-null="true" />
+        </property>
+        <property name="enabled" type="byte">
+            <column name="enabled" not-null="true" />
+        </property>
+        <property name="firstname" type="string">
+            <column name="firstname" length="105" />
+        </property>
+        <property name="lastname" type="string">
+            <column name="lastname" length="145" />
+        </property>
+        <property name="note" type="string">
+            <column name="note" length="245" />
+        </property>
+        <set name="userRoleses" table="user_roles" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="username" length="45" not-null="true" />
+            </key>
+            <one-to-many class="rashjz.info.app.bp.domain.UserRoles" />
+        </set>
+    </class>  
+    <sql-query name="findByUsername">
+        <return alias="users" class="rashjz.info.app.bp.domain.Users"/>
+         <![CDATA[select * from users s where s.username = :username]]>
+    </sql-query>
+       <sql-query name="findByUsernamePassword">
+        <return alias="users" class="rashjz.info.app.bp.domain.Users"/>
+         <![CDATA[select * from users s where s.username = :username and  password = :password]]>
+    </sql-query>
+</hibernate-mapping>

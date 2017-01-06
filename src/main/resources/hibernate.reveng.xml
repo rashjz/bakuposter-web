@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-reverse-engineering PUBLIC "-//Hibernate/Hibernate Reverse Engineering DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-reverse-engineering-3.0.dtd">
+<hibernate-reverse-engineering>
+  <schema-selection match-catalog="bakuposter"/>
+  <table-filter match-name="CONTENT_COMMENTS"/>
+  <table-filter match-name="CONTENT_TYPE"/>
+  <table-filter match-name="LOCATION"/>
+  <table-filter match-name="GCM_USERS"/>
+  <table-filter match-name="VOTE_CONTENT"/>
+  <table-filter match-name="user_roles"/>
+  <table-filter match-name="persistent_logins"/>
+  <table-filter match-name="ROLE"/>
+  <table-filter match-name="users"/>
+  <table-filter match-name="CONTENT"/>
+  <table-filter match-name="VOTE_TYPE"/>
+</hibernate-reverse-engineering>

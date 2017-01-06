@@ -1,0 +1,81 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+       http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd
+       http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd
+
+
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context-4.0.xsd
+       http://www.springframework.org/schema/util
+       http://www.springframework.org/schema/util/spring-util-4.0.xsd
+       http://www.springframework.org/schema/mvc 
+       http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd">
+    
+    
+    <!-- Ensures that configuration properties are read from a property file -->
+    <context:property-placeholder location="classpath:application.properties"/>
+    <context:component-scan base-package="rashjz.info.app.bp"/>
+    <mvc:annotation-driven/>
+ 
+    <import resource="spring-database.xml" />
+    <import resource="spring-security.xml" />
+ 
+    <!--step1 configure context and util for 4.0 xsd file dispatcher--> 
+    <bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping"/>
+    <bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter"/>
+    <bean class="org.springframework.web.servlet.mvc.support.ControllerBeanNameHandlerMapping"/>
+   
+
+     
+    <bean id="localeResolver" class="org.springframework.web.servlet.i18n.CookieLocaleResolver">
+        <property name="cookieName" value="myCookie" />
+        <property name="defaultLocale" value="en" />
+    </bean>
+
+    
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <mvc:mapping path="/**" />
+            <bean id="localeChangeInterceptor" class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor">
+                <property name="paramName" value="lang" />
+            </bean>
+        </mvc:interceptor>
+    </mvc:interceptors>
+	
+ 
+    <!-- If you have messages.properties and messages_en.properties bundle, then bundle name is messages. If you have them in the WEB-INF folder,
+    then basename is /WEB-INF/messages, i.e. according to /path/to/bundle/bundlename. If you have messages.properties within /WEB-INF/messages 
+    folder, then corresponding basename is /WEB-INF/messages/messages. -->
+    <bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource"> 
+        <property name="basename" value="classpath:messages/messages" /> 
+        <property name="defaultEncoding" value="UTF-8" /> 
+    </bean>
+  
+     
+    <bean id="viewResolver"
+          class="org.springframework.web.servlet.view.InternalResourceViewResolver"
+          p:prefix="/WEB-INF/jsp/"
+          p:suffix=".jsp" />
+    <!--step2 configure service and controller classes-->
+    <mvc:resources mapping="/resources/**" location="/resources/"/>
+    <mvc:resources mapping="/uploads/**" location="file:/home/rashad/uploads/" />
+    
+    <!-- upload configure context --> 
+    <bean id="multipartResolver"   class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <property name="maxUploadSize" value="10240000"/>
+    </bean> 
+    
+    <import resource="spring-social.xml" />
+    
+    <mvc:default-servlet-handler />
+   
+    <!--step4 configure resources to get js css and other files from context--> 
+</beans>

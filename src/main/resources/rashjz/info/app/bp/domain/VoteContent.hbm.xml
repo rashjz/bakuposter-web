@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Aug 19, 2016 3:16:02 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="rashjz.info.app.bp.domain.VoteContent" table="VOTE_CONTENT" catalog="bakuposter" optimistic-lock="version">
+        <id name="recId" type="java.lang.Integer">
+            <column name="REC_ID" />
+            <generator class="identity" />
+        </id>
+        <property name="value" type="java.lang.Float">
+            <column name="VALUE" precision="8" scale="4" />
+        </property>
+        <property name="contentId" type="java.lang.Integer">
+            <column name="CONTENT_ID" />
+        </property>
+        <property name="macId" type="string">
+            <column name="MAC_ID" length="200" />
+        </property>
+        <property name="voteType" type="java.lang.Integer">
+            <column name="VOTE_TYPE" />
+        </property>
+    </class>
+</hibernate-mapping>
