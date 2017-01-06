@@ -4,7 +4,7 @@
   <session-factory>
     <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
     <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
-    <property name="hibernate.connection.url">jdbc:mysql://localhost:3344/bakuposter?autoReconnect=true&amp;useUnicode=true&amp;characterEncoding=utf-8</property>
+    <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/bakuposter?autoReconnect=true&amp;useUnicode=true&amp;characterEncoding=utf-8</property>
     <property name="hibernate.connection.username">root</property>
     <property name="hibernate.connection.password">root</property>
     <property name="hibernate.connection.CharSet">utf8</property>
