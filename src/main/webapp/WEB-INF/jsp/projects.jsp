@@ -16,7 +16,7 @@
     <script type="text/javascript" src="//code.jquery.com/jquery-1.12.0.min.js"></script>
     <meta name="google-site-verification" content="gCElmRMfRP73YJhZ1RH24U9KKweS1gondBPMhGP4Foo"/>
     <meta name="description" content="Online film portalı">
-    <meta name="author" content="Rəşad Cavadov">
+    <meta name="author" content="Rashad Javadov">
 
     <link href="${pageContext.request.contextPath}/resources/css/projectGrid.css" rel="stylesheet">
 

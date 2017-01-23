@@ -1,7 +1,7 @@
 <%-- 
     Document   : sidebar
     Created on : Apr 23, 2016, 11:26:55 AM
-    Author     : Mobby
+    Author     : Rashad Javadov
 --%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
@@ -18,22 +18,12 @@
     });
 
 </script> 
-<c:choose>
-    <c:when test="${typeId==1}"> 
-        <c:set value="active" var="movieListActiveClass"></c:set>  
-    </c:when>
-    <c:when test="${typeId==2}"> 
-        <c:set value="active" var="concertlistclass"></c:set>
-    </c:when>
-    <c:when test="${typeId==3}"> 
-        <c:set value="active" var="theaterListActiveClass"></c:set>
-    </c:when>
-</c:choose>
+
 <!--list group--> 
 <div style="margin-top: 20px;" class="list-group"> 
-    <a href="projects?typeId=1" class="list-group-item ${movieListActiveClass}"><spring:message code="movie"/><span class="sr-only">(current)</span></a>
-    <a href="projects?typeId=2" class="list-group-item ${concertlistclass}"><spring:message code="concert"/><span class="sr-only">(current)</span></a>
-    <a href="projects?typeId=3" class="list-group-item ${theaterListActiveClass}"><spring:message code="theater"/><span class="sr-only">(current)</span></a>
+    <a id="listgroup1" href="projects?typeId=1" class="list-group-item ${movieListActiveClass}"><spring:message code="movie"/><span class="sr-only">(current)</span></a>
+    <a id="listgroup2" href="projects?typeId=2" class="list-group-item ${concertlistclass}"><spring:message code="concert"/><span class="sr-only">(current)</span></a>
+    <a id="listgroup3" href="projects?typeId=3" class="list-group-item ${theaterListActiveClass}"><spring:message code="theater"/><span class="sr-only">(current)</span></a>
 </div>
 
 
@@ -96,4 +86,8 @@
     (adsbygoogle = window.adsbygoogle || []).push({});
 </script>-->
 
-
+<script>
+    //menu activate script
+    $('#menulink'+${typeId}).addClass(' active');
+    $('#listgroup'+${typeId}).addClass(' active');
+</script>
