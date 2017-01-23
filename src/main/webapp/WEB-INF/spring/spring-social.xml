@@ -1,39 +1,32 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
-       xmlns:mvc="http://www.springframework.org/schema/mvc" 
-       xmlns:context="http://www.springframework.org/schema/context"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xsi:schemaLocation="
-        http://www.springframework.org/schema/beans     
-        http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
-        http://www.springframework.org/schema/mvc 
-        http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd
-        http://www.springframework.org/schema/context 
-        http://www.springframework.org/schema/context/spring-context-4.0.xsd">
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans-4.0.xsd">
 
     <bean id="connectionFactoryRegistry" class="org.springframework.social.connect.support.ConnectionFactoryRegistry">
         <property name="connectionFactories">
             <list>
                 <bean class="org.springframework.social.facebook.connect.FacebookConnectionFactory">
-                    <constructor-arg value="${facebook.api.key}" />
-                    <constructor-arg value="${facebook.api.secret}" />
-                </bean> 
+                    <constructor-arg value="${facebook.api.key}"/>
+                    <constructor-arg value="${facebook.api.secret}"/>
+                </bean>
                 <bean class="org.springframework.social.twitter.connect.TwitterConnectionFactory">
-                    <constructor-arg value="${twitter.api.key}" />
-                    <constructor-arg value="${twitter.api.secret}" />
+                    <constructor-arg value="${twitter.api.key}"/>
+                    <constructor-arg value="${twitter.api.secret}"/>
                 </bean>
             </list>
         </property>
     </bean>
 
     <bean id="facebookServiceProvider" class="rashjz.info.app.bp.social.util.OAuthServiceProvider">
-        <constructor-arg name="config" ref="facebookServiceConfig" />
+        <constructor-arg name="config" ref="facebookServiceConfig"/>
     </bean>
 
     <bean id="facebookServiceConfig" class="rashjz.info.app.bp.social.util.OAuthServiceConfig">
-        <constructor-arg value="888848437872798" />
-        <constructor-arg value="c8655049686f1125e1668e02934eb37c" />
-        <constructor-arg value="http://bakuposter.com/facebook/callback" />
-        <constructor-arg value="org.scribe.builder.api.FacebookApi" />
+        <constructor-arg value="888848437872798"/>
+        <constructor-arg value="c8655049686f1125e1668e02934eb37c"/>
+        <constructor-arg value="http://bakuposter.com/facebook/callback"/>
+        <constructor-arg value="org.scribe.builder.api.FacebookApi"/>
     </bean>
 
     <bean id="oAuth2Parameters" class="org.springframework.social.oauth2.OAuth2Parameters">
