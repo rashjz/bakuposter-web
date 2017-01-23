@@ -1,11 +1,5 @@
 package rashjz.info.app.bp.web;
 
-import java.io.Serializable;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.logging.Logger;
-import javax.swing.SortOrder; 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,9 +12,16 @@ import rashjz.info.app.bp.domain.PagingResult;
 import rashjz.info.app.bp.service.ContentService;
 import rashjz.info.app.bp.service.LocationService;
 
+import javax.swing.*;
+import java.io.Serializable;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.logging.Logger;
+
 /**
  *
- * @author Mobby
+ * @author @rashjz
  */
 @Controller
 public class ProjectsController implements Serializable {

@@ -1,15 +1,11 @@
 package rashjz.info.app.bp.dto;
 
-import java.util.Collection;
-
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 import rashjz.info.app.bp.domain.Users;
 
-/**
- * @author <a href="mailto:sunil.pulugula@wavemaker.com">Sunil Kumar</a>
- * @since 17/3/16
- */
+import java.util.Collection;
+
 public class LocalUser extends User {
 
     private Users users;

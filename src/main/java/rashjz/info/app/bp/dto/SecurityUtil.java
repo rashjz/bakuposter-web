@@ -1,15 +1,11 @@
 package rashjz.info.app.bp.dto;
  
-import java.util.logging.Logger;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
 
-/**
- * @author <a href="mailto:sunil.pulugula@wavemaker.com">Sunil Kumar</a>
- * @since 29/3/16
- */
+import java.util.logging.Logger;
+
 public class SecurityUtil {
 
     private static final Logger LOGGER = Logger.getLogger(SecurityUtil.class.getName());

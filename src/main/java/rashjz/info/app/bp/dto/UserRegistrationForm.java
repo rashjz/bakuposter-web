@@ -1,9 +1,5 @@
 package rashjz.info.app.bp.dto;
 
-/**
- * @author <a href="mailto:sunil.pulugula@wavemaker.com">Sunil Kumar</a>
- * @since 28/3/16
- */
 public class UserRegistrationForm {
 
     private String userId;

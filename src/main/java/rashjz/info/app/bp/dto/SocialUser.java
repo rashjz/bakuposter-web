@@ -1,13 +1,9 @@
 package rashjz.info.app.bp.dto;
 
-import java.util.Collection;
-
 import org.springframework.security.core.GrantedAuthority;
 
-/**
- * @author <a href="mailto:sunil.pulugula@wavemaker.com">Sunil Kumar</a>
- * @since 2/4/16
- */
+import java.util.Collection;
+
 public class SocialUser extends org.springframework.social.security.SocialUser {
 
     private String userId;
