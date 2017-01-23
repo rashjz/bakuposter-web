@@ -84,9 +84,9 @@
 </div>
 
 
-
+<!--
 <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<!-- webbakuposterads -->
+ webbakuposterads 
 <ins class="adsbygoogle"
      style="display:block"
      data-ad-client="ca-pub-9257288331240431"
@@ -94,6 +94,6 @@
      data-ad-format="auto"></ins>
 <script>
     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
+</script>-->
 
 

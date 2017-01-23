@@ -1,0 +1,13 @@
+# Created by .ignore support plugin (hsz.mobi)
+.idea/compiler.xml
+.idea/misc.xml
+.idea/workspace.xml
+src/main/resources/META-INF/.LCKpersistence.xml~
+src/main/resources/db/
+src/test/
+target/
+classes/
+src/main/resources/META-INF/
+.idea/libraries/Maven__org_springframework_spring_beans_4_0_1_RELEASE.xml
+.idea/libraries/Maven__org_springframework_spring_core_4_0_1_RELEASE.xml
+lib/

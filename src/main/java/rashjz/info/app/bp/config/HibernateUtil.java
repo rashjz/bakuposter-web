@@ -4,23 +4,36 @@
  * and open the template in the editor.
  */
 package rashjz.info.app.bp.config;
- 
+
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
-/**  
+import java.io.InputStream;
+import java.util.Properties;
+import java.util.logging.Logger;
+
+/**
  * @author Mobby
  */
 public class HibernateUtil {
-
+    private static final Logger logger = Logger.getLogger(HibernateUtil.class.getName());
     private static SessionFactory sessionFactory;
+    private static InputStream inputStream;
 
     static {
         try {
-            // Create the SessionFactory from standard (hibernate.cfg.xml) 
-            // config file.
+            Properties dbConnectionProperties = new Properties();
+            try {
+//                inputStream = HibernateUtil.class.getClassLoader().getResourceAsStream("application.properties");
+                dbConnectionProperties.load(inputStream);
+//                logger.info("xxxxxxxx xxxxxxxxxxxxxxxxx" + dbConnectionProperties.get("database.driver"));
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+//            sessionFactory = new Configuration().mergeProperties(dbConnectionProperties).configure().buildSessionFactory();
             sessionFactory = new Configuration().configure().buildSessionFactory();
- 
+
+
         } catch (Throwable ex) {
             // Log the exception. 
             System.err.println("Initial SessionFactory creation failed." + ex);
