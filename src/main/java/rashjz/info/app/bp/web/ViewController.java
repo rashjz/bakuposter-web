@@ -5,6 +5,19 @@
  */
 package rashjz.info.app.bp.web;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.propertyeditors.CustomDateEditor;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import rashjz.info.app.bp.domain.Content;
+import rashjz.info.app.bp.domain.Location;
+import rashjz.info.app.bp.service.ContentService;
+import rashjz.info.app.bp.service.LocationService;
+
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
@@ -13,22 +26,6 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.logging.Logger;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.propertyeditors.CustomDateEditor;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.WebDataBinder;
-import org.springframework.web.bind.annotation.InitBinder;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-import rashjz.info.app.bp.domain.Content;
-import rashjz.info.app.bp.domain.Location;
-import rashjz.info.app.bp.service.ContentService;
-import rashjz.info.app.bp.service.LocationService;
 
 /**
  *
@@ -79,7 +76,7 @@ public class ViewController implements Serializable {
         }
         
         model.addAttribute("content", content);
-        return "view";
+        return "admin/view";
     }
 
     // delete content
@@ -96,7 +93,7 @@ public class ViewController implements Serializable {
     public String makeSomeAction(@ModelAttribute("content") Content content, BindingResult result, Model model, final RedirectAttributes redirectAttributes) {
         LOG.info("save-Or-Update-Content - - - " + content.getTitle());
         if (result.hasErrors()) {
-            return "view";
+            return "admin/view";
         } else {
 //            LOG.info("-- -- -- "+content.toString());
             redirectAttributes.addFlashAttribute("css", "success");
@@ -121,6 +118,6 @@ public class ViewController implements Serializable {
         LOG.info("get new content ()");
         Content content = new Content();
         model.addAttribute("content", content);
-        return "view";
+        return "admin/view";
     }
 }

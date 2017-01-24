@@ -1,19 +1,20 @@
 package rashjz.info.app.bp.web;
 
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import rashjz.info.app.bp.domain.PagingResult;
+import rashjz.info.app.bp.service.ContentService;
+
+import javax.swing.*;
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.logging.Logger;
-import javax.swing.SortOrder; 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestParam;
-import rashjz.info.app.bp.domain.PagingResult;
-import rashjz.info.app.bp.service.ContentService;
 
 @Controller
 public class MainController implements Serializable {
@@ -26,14 +27,13 @@ public class MainController implements Serializable {
     @RequestMapping(value = "/main", method = RequestMethod.GET)
     public String getPagingList(Model model, @RequestParam(value = "keyValue", required = false) String keyValue,
             Integer offset, Integer maxResults) {
-        LOG.info("******** keyValue offset ******* " + keyValue + " " + offset);
+//        LOG.info("******** keyValue offset ******* " + keyValue + " " + offset);
         PagingResult pagingData = new PagingResult();
         Map<String, Object> filters = new HashMap<String, Object>();
         if (offset == null) {
             offset = 0;
         }
         if (offset != null) {
-//            filters.put("typeId", "1");
             if (keyValue != null && !keyValue.equals("")) {
                 filters.put("title", keyValue.toString());
             }
@@ -46,7 +46,7 @@ public class MainController implements Serializable {
         model.addAttribute("keyValue", keyValue);
         model.addAttribute("offset", offset);
 
-        return "main";
+        return "admin/main";
     }
 
 //    @RequestMapping(value = "/springPaginationDataTables.web", method = RequestMethod.GET, produces = "application/json; charset=UTF-8")

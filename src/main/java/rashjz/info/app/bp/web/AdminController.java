@@ -5,12 +5,6 @@
  */
 package rashjz.info.app.bp.web;
 
-import java.io.Serializable;
-import java.security.Principal;
-import java.util.HashSet;
-import java.util.logging.Logger;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -24,14 +18,23 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import rashjz.info.app.bp.domain.GcmUsers;
 import rashjz.info.app.bp.domain.UserRoles;
 import rashjz.info.app.bp.domain.Users;
 import rashjz.info.app.bp.dto.UserRegistrationForm;
+import rashjz.info.app.bp.service.GcmUsersService;
 import rashjz.info.app.bp.service.UserService;
 import rashjz.info.app.bp.util.UserUtil;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.Serializable;
+import java.security.Principal;
+import java.util.HashSet;
+import java.util.List;
+import java.util.logging.Logger;
+
 /**
- *
  * @author Mobby
  */
 @Controller
@@ -42,11 +45,13 @@ public class AdminController implements Serializable {
     @Autowired
     UserService userService;
 
+    @Autowired
+    GcmUsersService gcmUsersService;
+
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String get2MainPage(HttpServletRequest request, HttpServletResponse response, Model model) {
         model.addAttribute("userReg", new UserRegistrationForm());
         return "redirect:/projects?typeId=1";
-//        return "redirect:/contact";
     }
 
     @RequestMapping(value = "/admin", method = RequestMethod.GET)
@@ -55,8 +60,17 @@ public class AdminController implements Serializable {
         return "admin";
     }
 
+    @RequestMapping(value = "/users", method = RequestMethod.GET)
+    public String adminUsersPage(ModelMap model) {
+        List<GcmUsers> usersList = gcmUsersService.getAllGcmUsers();
+        model.addAttribute("users", usersList);
+        return "admin/users";
+    }
+
     @RequestMapping(value = "register", method = RequestMethod.POST)
-    public String makeSomeAction(@ModelAttribute("userReg") UserRegistrationForm form, BindingResult result, Model model, final RedirectAttributes redirectAttributes) {
+    public String makeSomeAction(@ModelAttribute("userReg") UserRegistrationForm form,
+                                 BindingResult result, Model model,
+                                 final RedirectAttributes redirectAttributes) {
         LOG.info("register - - - " + form.toString());
         if (result.hasErrors()) {
             return "login";
@@ -79,17 +93,7 @@ public class AdminController implements Serializable {
             userService.addUser(user);
 
         }
-
-//        else {
-////            LOG.info("-- -- -- "+content.toString());
-//            redirectAttributes.addFlashAttribute("css", "success");
-//            if (content.getRecId() == null || content.getRecId() == 0) {//is new
-//                redirectAttributes.addFlashAttribute("msg", "User added successfully!");
-//            } else {
-//                redirectAttributes.addFlashAttribute("msg", "User updated successfully!");
-//            }
         return "redirect:/login";
-//        }
     }
 
     @RequestMapping(value = "/login", method = RequestMethod.GET)
@@ -97,7 +101,7 @@ public class AdminController implements Serializable {
         model.addAttribute("userReg", new UserRegistrationForm());
         return "login";
     }
- 
+
     @RequestMapping(value = "/logout", method = RequestMethod.GET)
     public String logoutPage(HttpServletRequest request, HttpServletResponse response) {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
@@ -108,7 +112,6 @@ public class AdminController implements Serializable {
         return "redirect:/login?logout";
     }
 
-    
 
     @RequestMapping(value = "/403", method = RequestMethod.GET)
     public ModelAndView accesssDenied(Principal user) {

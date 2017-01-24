@@ -37,7 +37,7 @@ public class LocationController implements Serializable {
     public String getAllLocations(Model model) {
         List<Location> list = locationService.getAllLocation();
         model.addAttribute("listLocation", list);
-        return "location";
+        return "admin/location";
     }
 
     @ResponseBody
