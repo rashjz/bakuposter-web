@@ -29,7 +29,7 @@ import java.util.logging.Logger;
 
 /**
  *
- * @author Mobby
+ * @author Rashad Javadov
  */
 @Controller
 public class ViewController implements Serializable {

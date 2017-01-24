@@ -5,37 +5,34 @@
  */
 package rashjz.info.app.bp.secure;
 
-import java.io.IOException;
-import java.util.logging.Logger;
-import javax.servlet.ServletException;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-import org.springframework.beans.factory.annotation.Autowired;
-
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
-import org.springframework.stereotype.Repository;
 import rashjz.info.app.bp.dao.UserDao;
 import rashjz.info.app.bp.dao.UserDaoImpl;
 import rashjz.info.app.bp.domain.Users;
 import rashjz.info.app.bp.dto.LocalUser;
 import rashjz.info.app.bp.dto.SecurityUtil;
-import rashjz.info.app.bp.service.UserService;
 import rashjz.info.app.bp.social.util.AuthorizationUtility;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import java.io.IOException;
+import java.util.logging.Logger;
 
 //@Repository
 public class UserLoginSuccessHandler implements AuthenticationSuccessHandler {
 
     private static final Logger LOG = Logger.getLogger(UserLoginSuccessHandler.class.getName());
 
-//    @Autowired
-//    UserService userService;
+
     @Override
-    public void onAuthenticationSuccess(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Authentication authentication) throws IOException, ServletException {
+    public void onAuthenticationSuccess(HttpServletRequest httpServletRequest,
+                                        HttpServletResponse httpServletResponse,
+                                        Authentication authentication) throws IOException, ServletException {
         //do some logic here if you want something to be done whenever
         //the user successfully logs in.
         UserDao dao = new UserDaoImpl();
@@ -44,7 +41,7 @@ public class UserLoginSuccessHandler implements AuthenticationSuccessHandler {
         UserDetails authUser = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 
         Users users = dao.getbyUserName(authUser.getUsername());
-        if (users.getNote()==null) {
+        if (users.getNote() == null) {
             users.setNote("http://www.brentfordfc.co.uk/images/common/bg_player_profile_default_big.png");
         }
         LocalUser localUser = new LocalUser(users, users.getUsername(), users.getPassword(), true, true, true, true, new AuthorizationUtility().getAuthorities(null));
@@ -65,9 +62,6 @@ public class UserLoginSuccessHandler implements AuthenticationSuccessHandler {
         }
 
     }
-//
-//    public void setUserService(UserService userService) {
-//        this.userService = userService;
-//    }
+
 
 }

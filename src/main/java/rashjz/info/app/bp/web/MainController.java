@@ -25,9 +25,10 @@ public class MainController implements Serializable {
     ContentService contentService;
 
     @RequestMapping(value = "/main", method = RequestMethod.GET)
-    public String getPagingList(Model model, @RequestParam(value = "keyValue", required = false) String keyValue,
-            Integer offset, Integer maxResults) {
-//        LOG.info("******** keyValue offset ******* " + keyValue + " " + offset);
+    public String getPagingList(Model model,
+                                @RequestParam(value = "keyValue", required = false) String keyValue,
+                                Integer offset,
+                                Integer maxResults) {
         PagingResult pagingData = new PagingResult();
         Map<String, Object> filters = new HashMap<String, Object>();
         if (offset == null) {
@@ -35,10 +36,9 @@ public class MainController implements Serializable {
         }
         if (offset != null) {
             if (keyValue != null && !keyValue.equals("")) {
-                filters.put("title", keyValue.toString());
             }
             pagingData = contentService.lazyLoadContent(offset.intValue(), 10, null, SortOrder.UNSORTED, null);
-            LOG.info(" ****** getList().size **** "+pagingData.getList().size());
+            LOG.info(" ****** getList().size **** " + pagingData.getList().size());
         }
         contentService.lazyLoadContentCount(offset.intValue(), 10, null, SortOrder.UNSORTED, null, pagingData);
         model.addAttribute("contents", pagingData.getList());

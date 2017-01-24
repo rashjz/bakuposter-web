@@ -5,15 +5,16 @@
  */
 package rashjz.info.app.bp.service;
 
-import rashjz.info.app.bp.dao.*;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import rashjz.info.app.bp.dao.ContentDao;
+import rashjz.info.app.bp.domain.Content;
+import rashjz.info.app.bp.domain.PagingResult;
+
+import javax.swing.*;
 import java.io.Serializable;
 import java.util.List;
 import java.util.Map;
-import javax.swing.SortOrder;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-import rashjz.info.app.bp.domain.Content;
-import rashjz.info.app.bp.domain.PagingResult;
 
 /**
  *
@@ -22,7 +23,6 @@ import rashjz.info.app.bp.domain.PagingResult;
 @Service
 public class ContentServiceImpl implements Serializable, ContentService {
 
-//    private static final Logger LOG = Logger.getLogger(ContentServiceImpl.class.getName());
     @Autowired
     ContentDao contentDao;
 

@@ -16,6 +16,7 @@
         <intercept-url pattern="/main" access="hasRole('ROLE_USER')"/>
         <intercept-url pattern="/profile" access="hasRole('ROLE_USER')"/>
         <intercept-url pattern="/location" access="hasRole('ROLE_USER')"/>
+        <intercept-url pattern="/users" access="hasRole('ROLE_USER')"/>
         <intercept-url pattern="/view/**" access="hasRole('ROLE_USER')"/>
         <intercept-url pattern="/facebook/**" access="permitAll"/>
         <intercept-url pattern="/twitter/**" access="permitAll"/>

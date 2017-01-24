@@ -20,7 +20,6 @@ import java.util.Map;
 import java.util.logging.Logger;
 
 /**
- *
  * @author @rashjz
  */
 @Controller
@@ -34,16 +33,17 @@ public class ProjectsController implements Serializable {
     LocationService locationService;
 
     @RequestMapping(value = "/projects", method = RequestMethod.GET)
-    public String getPagingList(Model model, @RequestParam(value = "keyValue", required = false) String keyValue,
-            @RequestParam(value = "typeId", required = false) String typeId, Integer offset, Integer maxResults) {
-        LOG.info("******** keyValue ******* " + keyValue);
+    public String getPagingList(Model model,
+                                @RequestParam(value = "keyValue", required = false) String keyValue,
+                                @RequestParam(value = "typeId", required = false) String typeId,
+                                Integer offset,
+                                Integer maxResults) {
         PagingResult pagingData = new PagingResult();
         Map<String, Object> filters = new HashMap<String, Object>();
         if (offset == null) {
             offset = 0;
         }
         if (offset != null) {
-//            filters.put("typeId", "1");
             if (keyValue != null && !keyValue.equals("")) {
                 filters.put("title", keyValue.toString());
             }

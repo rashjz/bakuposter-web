@@ -5,13 +5,7 @@
  */
 package rashjz.info.app.bp.web;
 
-import java.io.Serializable;
-import java.util.Date;
-import java.util.List;
-import java.util.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -20,6 +14,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import rashjz.info.app.bp.domain.Location;
 import rashjz.info.app.bp.service.LocationService;
+
+import java.io.Serializable;
+import java.util.Date;
+import java.util.List;
+import java.util.logging.Logger;
 
 /**
  *
@@ -57,38 +56,38 @@ public class LocationController implements Serializable {
         return location;
     }
 
-    @RequestMapping(value = "/mylocation", method = RequestMethod.GET)
-    public ResponseEntity<Location> createMylocation() {
-        Location location = new Location(); 
-        try {
-
-            location.setLatitude(Float.valueOf("40.38401663182168"));
-            location.setLongitude(Float.valueOf("40.38401663182168"));
-            location.setStatus("a");
-            location.setTitle("TEST");
-            location.setInsDate(new Date());
-            location.setRecId(1);
-            location.setNote("123");
-            LOG.info("location " + location);
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
-
-        return new ResponseEntity<Location>(location, HttpStatus.OK);
-    }
-
-    @RequestMapping(value = "/test", method = RequestMethod.GET)
-    public Location createNewLocationTest() {
-        Location location = new Location();
-
-        location.setLatitude(Float.valueOf("40.38401663182168"));
-        location.setLongitude(Float.valueOf("40.38401663182168"));
-        location.setStatus("a");
-        location.setTitle("TEST");
-        location.setInsDate(new Date());
-        location.setRecId(1);
-        location.setNote("123");
-        LOG.info("location " + location);
-        return location;
-    }
+//    @RequestMapping(value = "/mylocation", method = RequestMethod.GET)
+//    public ResponseEntity<Location> createMylocation() {
+//        Location location = new Location();
+//        try {
+//
+//            location.setLatitude(Float.valueOf("40.38401663182168"));
+//            location.setLongitude(Float.valueOf("40.38401663182168"));
+//            location.setStatus("a");
+//            location.setTitle("TEST");
+//            location.setInsDate(new Date());
+//            location.setRecId(1);
+//            location.setNote("123");
+//            LOG.info("location " + location);
+//        } catch (Exception ex) {
+//            ex.printStackTrace();
+//        }
+//
+//        return new ResponseEntity<Location>(location, HttpStatus.OK);
+//    }
+//
+//    @RequestMapping(value = "/test", method = RequestMethod.GET)
+//    public Location createNewLocationTest() {
+//        Location location = new Location();
+//
+//        location.setLatitude(Float.valueOf("40.38401663182168"));
+//        location.setLongitude(Float.valueOf("40.38401663182168"));
+//        location.setStatus("a");
+//        location.setTitle("TEST");
+//        location.setInsDate(new Date());
+//        location.setRecId(1);
+//        location.setNote("123");
+//        LOG.info("location " + location);
+//        return location;
+//    }
 }
