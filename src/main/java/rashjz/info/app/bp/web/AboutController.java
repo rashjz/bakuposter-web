@@ -11,6 +11,7 @@ import java.util.UUID;
 import java.util.logging.Logger;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -32,7 +33,6 @@ import rashjz.info.app.bp.util.ExtensionParser;
 import rashjz.info.app.bp.util.UserUtil;
 
 /**
- *
  * @author Mobby
  */
 @Controller
@@ -42,7 +42,7 @@ public class AboutController implements Serializable {
     private static String UPLOAD_LOCATION = "/home/rashad/uploads/";
     private static final Logger LOG = Logger.getLogger(AboutController.class.getName());
 
-//    @Autowired
+    //    @Autowired
 //    FileValidator fileValidator;
 //    @InitBinder("fileUpload")
 //    protected void initBinderFileBucket(WebDataBinder binder) {
@@ -62,6 +62,11 @@ public class AboutController implements Serializable {
         model.addObject("typeId", 4);
         model.addObject("message", " ");
         return model;
+    }
+
+    @RequestMapping(value = "/privacy-policy", method = RequestMethod.GET)
+    public String getPrivacyPolicy() {
+        return "privacy-policy";
     }
 
     @RequestMapping(value = "/profile", method = RequestMethod.GET)
@@ -103,9 +108,6 @@ public class AboutController implements Serializable {
         return "user";
     }
     // @JsonView(Views.Public.class) - Optional, filters json data to display.
-
- 
-
 
 
 }

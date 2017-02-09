@@ -22,18 +22,9 @@ public class HibernateUtil {
 
     static {
         try {
-            Properties dbConnectionProperties = new Properties();
-            try {
-//                inputStream = HibernateUtil.class.getClassLoader().getResourceAsStream("application.properties");
-                dbConnectionProperties.load(inputStream);
-//                logger.info("xxxxxxxx xxxxxxxxxxxxxxxxx" + dbConnectionProperties.get("database.driver"));
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
+//            Properties dbConnectionProperties = new Properties();
 //            sessionFactory = new Configuration().mergeProperties(dbConnectionProperties).configure().buildSessionFactory();
             sessionFactory = new Configuration().configure().buildSessionFactory();
-
-
         } catch (Throwable ex) {
             // Log the exception. 
             System.err.println("Initial SessionFactory creation failed." + ex);

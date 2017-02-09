@@ -35,6 +35,7 @@
                         <li><a href="${projects}?typeId=3"><spring:message code="theater"/></a></li>
                         <li><a href="${about}"><spring:message code="about"/></a></li>
                         <li><a href="${contact}"><spring:message code="contact"/></a></li>
+                        <li><a href="/privacy-policy">Privacy-Policy</a></li>
                     </ul>
                 </div>
             </div>

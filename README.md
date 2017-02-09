@@ -10,4 +10,3 @@ http://bakuposter.com/
 ###### Facebook comment share and like integrated
 ###### Admin panel for content management
 ###### Admin panel for location management via google map
- 
